@@ -71,6 +71,21 @@ const countDays = (startDate, endDate) => {
 
 // 3
 // Given a Unix timestamp(milliseconds), return the current time in New York formatted as HH: mm: ss
+const unixConverter = (unixTime) => {
+  console.log("unixTime: ", unixTime);
+
+  const dateObj = new Date(unixTime);
+  console.log("dateObj: ", dateObj);
+  const timezoneConversion = dateObj.toLocaleString("en-US", { timeZone: "America/New_York" });
+  console.log("timezoneConversion: ", timezoneConversion);
+
+  const timeString = new Date(timezoneConversion).toTimeString();
+  const time = timeString.split(":");
+  const formattedTime = `${time[0]}:${time[1]}`;
+  console.log("formattedTime: ", formattedTime);
+
+  return formattedTime;
+};
 
 // 4
 // Write a function that:
@@ -82,4 +97,5 @@ const countDays = (startDate, endDate) => {
 // Write a function that calculates full months between two dates.
 
 sevenDaysLater("2024-02-25");
-countDays("2025-02-25", "2024-03-14");
+countDays("2024-02-25", "2024-03-14");
+unixConverter(Date.now());
